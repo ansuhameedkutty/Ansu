@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #28a18d, #378f83);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgb(170, 185, 185);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(83, 123, 126, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #368e9e;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background-color: #2dc2b396;
+            color: rgba(43, 113, 143, 0.696);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #4a6314d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Student App</h1>
+        <a href="{% url 'student_list' %}" class="btn">View Students</a>
+    </div>
+</body>
+</html>

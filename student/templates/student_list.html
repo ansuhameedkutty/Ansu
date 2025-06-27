@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+{% include 'head.html' %}
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right, #d9afd9, #488187);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 30px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        background-color: rgba(133, 66, 135, 0.27);
+        border-radius: 30px;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+        filter: blur(20px);
+        z-index: 0;
+    }
+
+    .box {
+        position: relative;
+        z-index: 1;
+        background-color: #c8bcbc;
+        border-radius: 25px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+        padding: 40px 30px;
+        width: 100%;
+        max-width: 1050px;
+        animation: fadeInPop 0.6s ease;
+    }
+
+    @keyframes fadeInPop {
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    .header-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 25px;
+    }
+
+    .header-buttons h2 {
+        color: #2c3e50;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        flex: 1;
+    }
+
+    .btn-custom {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        background: linear-gradient(to right, #82288e, #268d9f);
+        color: white;
+        border: none;
+        transition: 0.3s ease;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-custom:hover {
+        transform: scale(1.06);
+        background: linear-gradient(to right, #913188, #187a89);
+    }
+
+    .search-box {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .search-box input[type="text"] {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 250px;
+        font-size: 14px;
+        outline: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .search-box button {
+        padding: 10px 16px;
+        margin-left: 10px;
+        background: linear-gradient(to right, #82288e, #268d9f);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .search-box button:hover {
+        background: linear-gradient(to right, #913188, #187a89);
+    }
+
+    .table-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    th {
+        background-color: #812a9052;
+        color: white;
+        padding: 15px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    td {
+        padding: 14px;
+        font-size: 15px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .action-buttons a {
+        margin: 0 6px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .btn-warning {
+        background-color: #6b456d;
+    }
+
+    .btn-warning:hover {
+        background-color: #e67e22;
+        transform: scale(1.08);
+    }
+
+    .btn-delete {
+        background-color: #8e42a5;
+    }
+
+    .btn-delete:hover {
+        background-color: #942828;
+        transform: scale(1.08);
+    }
+
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pagination a, .pagination span {
+        display: inline-block;
+        margin: 0 8px;
+        padding: 8px 14px;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(to right, #82288e, #268d9f);
+        border-radius: 10px;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+
+    .pagination a:hover {
+        transform: scale(1.05);
+        background: linear-gradient(to right, #913188, #187a89);
+    }
+
+    .pagination .current {
+        background-color: #555;
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        .header-buttons {
+            flex-direction: column;
+            gap: 15px;
+            align-items: stretch;
+        }
+
+        .header-buttons h2 {
+            order: -1;
+        }
+
+        .action-buttons a {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .search-box {
+            justify-content: center;
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="header-buttons">
+            <a href="{% url 'student_create' %}" class="btn-custom">➕ Add Student</a>
+            <h2>STUDENT LIST</h2>
+            <a href="{% url 'logout' %}" class="btn-custom">🚪 Logout</a>
+        </div>
+
+        <!-- Search form -->
+        <form method="GET" class="search-box">
+            <input type="text" name="q" placeholder="Search by name or course..." value="{{ request.GET.q }}">
+            <button type="submit">🔍 Search</button>
+        </form>
+
+        <div class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>🔢 No.</th>
+                        <th>👤 Name</th>
+                        <th>📚 Course</th>
+                        <th>Email</th>
+                        <th>⚙ Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in page_obj %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.course }}</td>
+                        <td>{{ student.email }}</td>
+                        <td class="action-buttons">
+                            <a href="{% url 'student_update' student.id %}" class="btn-warning">✏ Edit</a>
+                            <a href="{% url 'student_delete' student.id %}" class="btn-delete">❌ Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No students found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?q={{ request.GET.q }}&page=1">⏮ First</a>
+                <a href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">⬅ Prev</a>
+            {% endif %}
+
+            <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next ➡</a>
+                <a href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last ⏭</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

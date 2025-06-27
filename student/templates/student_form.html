@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+{% include 'head.html' %}
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom right, #cfd9df, #e2ebf0); /* login-like soft background */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 40px 35px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form p {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+    }
+
+    button[type="submit"] {
+        margin-top: 15px;
+        background-color: #3498db;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2d82c7;
+    }
+
+    .btn-secondary {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        background-color: #bdc3c7;
+        color: #2c3e50;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background-color: #a7b0b7;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>✏ Student Form</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">💾 Save</button>
+        </form>
+        <a href="{% url 'student_list' %}" class="btn-secondary">⬅ Back to List</a>
+    </div>
+</body>
+</html>

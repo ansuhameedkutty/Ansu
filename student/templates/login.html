@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Student App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #c2f1fb, #3b7975);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .login-box:hover {
+            transform: scale(1.02);
+        }
+
+        .login-box h2 {
+            margin-bottom: 25px;
+            font-size: 30px;
+            color: #502c2c;
+            font-weight: bold;
+        }
+
+        .alert {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-main {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #84faf6, #8fd3f4);
+            border: none;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            background: linear-gradient(to right, #8fd3f4, #84fab0);
+            color: #1a1a1a;
+            transform: scale(1.02);
+        }
+
+        .btn-link {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>🔐 Login</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit" class="btn-main">Login</button>
+        </form>
+
+        <!-- Styled Sign Up button exactly like Login -->
+        <a href="{% url 'sign-up' %}" class="btn-link">
+            <div class="btn-main">Sign Up</div>
+        </a>
+    </div>
+</body>
+</html>

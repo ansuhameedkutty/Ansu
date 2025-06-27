@@ -1,0 +1,127 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Sign Up</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #97b3b3, #3b7596ac);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+    }
+
+    .form-container {
+      background-color: #5d7377;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgb(8, 8, 8);
+      max-width: 550px;
+      margin: 80px auto;
+    }
+
+    h2 {
+      font-weight: bold;
+      text-align: center;
+      color: #dddddd;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    label {
+      font-weight: 500;
+      color: #ccc;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      background-color: #a9babf;
+      color: #ffffff;
+      border: 1px solid #5f3c71;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: #bdbdbd;
+    }
+
+    input:focus {
+      background-color: #444;
+      border-color: #999;
+      outline: none;
+    }
+
+    .btn-submit {
+      background-color: #6c4890;
+      color: #fff;
+      font-weight: bold;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(92, 5, 62, 0.1);
+      transition: 0.3s ease-in-out;
+    }
+
+    .btn-submit:hover {
+      background-color: #5a6268;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 576px) {
+      .form-container {
+        margin: 30px 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form  method="post">
+      {% csrf_token %}
+
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required>
+
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" required>
+
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+
+      <label for="password1">Password</label>
+      <input type="password" name="password1" id="password1" class="form-control" placeholder="Password" required>
+
+      <label for="password2">Confirm Password</label>
+      <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password" required>
+
+      <button type="submit" class="btn-submit mt-3">Create Account</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
